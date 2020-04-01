@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://lior123:lior123@devconnector-icj4m.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtToken": "myseeecret"
+}
