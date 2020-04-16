@@ -5,9 +5,15 @@ import { Link } from 'react-router-dom';
 
 // Resources
 import BrandLogoImg from '../resources/img/BrandLogo.png';
+
 export default function MainNavBar() {
   return (
-    <nav className='navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom border-dark'>
+    <nav
+      className='navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom border-dark'
+      style={{
+        marginBottom: '83px',
+      }}
+    >
       <button
         className='navbar-toggler'
         data-toggle='collapse'
@@ -16,16 +22,15 @@ export default function MainNavBar() {
         <span className='navbar-toggler-icon' />
       </button>
       <Link to='/' className='navbar-brand'>
-        <img src={BrandLogoImg} style={{ width: '56px', height: '56px' }} />
+        <img
+          src={BrandLogoImg}
+          style={{ width: '56px', height: '56px' }}
+          alt='dev connector brand'
+        />
       </Link>
       <span className='navbar-text'>DevConnector</span>
       <div className='collapse navbar-collapse' id='collapse_target'>
-        <ul
-          className='navbar-nav'
-          style={{
-            color: '#17a2b8',
-          }}
-        >
+        <ul className='navbar-nav'>
           <li className='nav-item'>
             <Link to='/' className='nav-link' href='#'>
               Profiles
@@ -52,7 +57,7 @@ export default function MainNavBar() {
               Settings
               <span className='caret'></span>
             </Link>
-            <div className='dropdown-menu' aria-labelldby='dropdown_target'>
+            <div className='dropdown-menu' aria-labelledby='dropdown_target'>
               <Link to='/' className='dropdown-item'>
                 User Settings
               </Link>

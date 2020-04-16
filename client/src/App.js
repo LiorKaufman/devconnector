@@ -12,15 +12,29 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // CSS
 import './App.css';
 
+// navBar box Pusher style
+const boxStyle = {
+  width: '100%',
+  height: '83px',
+  margin: '0',
+  padding: '0',
+  border: '0',
+};
+
 function App() {
   return (
     <Router>
       <>
         <MainNavBar />
+        <div style={boxStyle}></div>
         <Route exact path='/' component={Landing} />
         <Switch>
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
+          <Route path='/register'>
+            <Register />
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
         </Switch>
       </>
     </Router>

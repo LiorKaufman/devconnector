@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,9 +6,60 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Numans', 'Raleway', sans-serif !important;
   font-size: 1rem;
   line-height: 1.6;
-  color: #333;
-  padding-top: 83px;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.landing {
+  height: 370px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.social_icon span {
+  font-size: 60px;
+  margin-left: 10px;
+}
+
+.social_icon span:hover {
+  color: #ffc312 !important;
+  cursor: pointer;
+}
+
+.social_icon {
+  position: absolute;
+  right: 20px;
+  top: -45px;
+}
+
+.input-group-prepend span {
+  width: 50px;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
 }
