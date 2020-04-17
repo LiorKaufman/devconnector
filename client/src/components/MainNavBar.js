@@ -9,7 +9,7 @@ import BrandLogoImg from '../resources/img/BrandLogo.png';
 export default function MainNavBar() {
   return (
     <nav
-      className='navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom border-dark'
+      className='navbar navbar-dark navbar-expand-md bg-dark fixed-top border-bottom border-dark'
       style={{
         marginBottom: '83px',
       }}
@@ -19,7 +19,7 @@ export default function MainNavBar() {
         data-toggle='collapse'
         data-target='#collapse_target'
       >
-        <span className='navbar-toggler-icon' />
+        <span className='navbar-toggler-icon'></span>
       </button>
       <Link to='/' className='navbar-brand'>
         <img
@@ -32,7 +32,7 @@ export default function MainNavBar() {
       <div className='collapse navbar-collapse' id='collapse_target'>
         <ul className='navbar-nav'>
           <li className='nav-item'>
-            <Link to='/' className='nav-link' href='#'>
+            <Link to='/' className='nav-link'>
               Profiles
             </Link>
           </li>

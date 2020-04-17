@@ -29,12 +29,8 @@ function App() {
         <div style={boxStyle}></div>
         <Route exact path='/' component={Landing} />
         <Switch>
-          <Route path='/register'>
-            <Register />
-          </Route>
-          <Route path='/login'>
-            <Login />
-          </Route>
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/login' component={Login} />
         </Switch>
       </>
     </Router>
