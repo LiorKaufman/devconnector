@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 // react router
 import { Link } from 'react-router-dom';
@@ -21,19 +22,37 @@ export default function Register() {
       [e.target.name]: e.target.value,
     });
 
-  const onSumbmit = (e) => {
+  const onSumbmit = async (e) => {
     e.preventDefault();
     if (password !== passwordCheck) {
       console.log('Passowrds dont match');
     } else {
-      console.log(userForm);
+      const newUser = {
+        name,
+        email,
+        password,
+      };
+
+      try {
+        const config = {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        };
+        const body = JSON.stringify(newUser);
+
+        const res = await axios.post('/api/users', body, config);
+        console.log(res.data);
+      } catch (err) {
+        console.error(err.response.data);
+      }
     }
   };
 
   return (
     <>
       <div className='container register'>
-        <div className='registration-body register-card'>
+        <div className='register-card'>
           <div>
             <h3 className='register-title register-align'>Register</h3>
             <p
