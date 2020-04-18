@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 // react router
 import { Link } from 'react-router-dom';
+
+// redux
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alertActions';
 
 const emptyUser = {
   name: '',
@@ -11,7 +16,7 @@ const emptyUser = {
   passwordCheck: '',
 };
 
-export default function Register() {
+function Register({ setAlert }) {
   const [userForm, setUserForm] = useState(emptyUser);
 
   const { name, email, password, passwordCheck } = userForm;
@@ -25,7 +30,7 @@ export default function Register() {
   const onSumbmit = async (e) => {
     e.preventDefault();
     if (password !== passwordCheck) {
-      console.log('Passowrds dont match');
+      setAlert('Passwords do not match', 'danger');
     } else {
       const newUser = {
         name,
@@ -53,17 +58,15 @@ export default function Register() {
     <>
       <div className='container register'>
         <div className='register-card'>
-          <div>
-            <h3 className='register-title register-align'>Register</h3>
-            <p
-              className='register-subtitle register-align'
-              style={{
-                color: '#1fd5b9',
-              }}
-            >
-              it's completely free
-            </p>
-          </div>
+          <h3 className='register-title register-align'>Register</h3>
+          <p
+            className='register-subtitle register-align'
+            style={{
+              color: '#1fd5b9',
+            }}
+          >
+            it's completely free
+          </p>
           <form action='' className='register-form' onSubmit={onSumbmit}>
             <label htmlFor='full-name' className='register-label'>
               Name
@@ -131,3 +134,9 @@ export default function Register() {
     </>
   );
 }
+
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Register);
