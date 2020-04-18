@@ -8,12 +8,7 @@ import BrandLogoImg from '../resources/img/BrandLogo.png';
 
 export default function MainNavBar() {
   return (
-    <nav
-      className='navbar navbar-dark navbar-expand-md bg-dark fixed-top border-bottom border-dark'
-      style={{
-        marginBottom: '83px',
-      }}
-    >
+    <nav className='navbar navbar-dark navbar-expand-md bg-dark fixed-top border-bottom border-dark'>
       <button
         className='navbar-toggler'
         data-toggle='collapse'
