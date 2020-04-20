@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import MainNavBar from './components/MainNavBar';
@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/Dashboard';
 
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -13,6 +14,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // redux
 import { Provider } from 'react-redux';
 import store from './store';
+import { loadUser } from './actions/authActions';
+
+//Helpers
+import setAuthToken from './helpers/setAuthToken';
 
 // CSS
 import './App.css';
@@ -26,7 +31,15 @@ const boxStyle = {
   border: '0',
 };
 
-function App() {
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
@@ -34,17 +47,20 @@ function App() {
           <MainNavBar />
           <div style={boxStyle}></div>
           <div className='container'>
-            <Alert />
+            <div className='absolute-center'>
+              <Alert />
+            </div>
             <Route exact path='/' component={Landing} />
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/dashboard' component={Dashboard} />
             </Switch>
           </div>
         </>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 // react router
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 // redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertActions';
+import { register } from '../../actions/authActions';
 
 const emptyUser = {
   name: '',
@@ -16,7 +16,7 @@ const emptyUser = {
   passwordCheck: '',
 };
 
-function Register({ setAlert }) {
+function Register({ setAlert, register, isAuthenticated }) {
   const [userForm, setUserForm] = useState(emptyUser);
 
   const { name, email, password, passwordCheck } = userForm;
@@ -32,27 +32,12 @@ function Register({ setAlert }) {
     if (password !== passwordCheck) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      const newUser = {
-        name,
-        email,
-        password,
-      };
-
-      try {
-        const config = {
-          headers: {
-            'Content-type': 'application/json',
-          },
-        };
-        const body = JSON.stringify(newUser);
-
-        const res = await axios.post('/api/users', body, config);
-        console.log(res.data);
-      } catch (err) {
-        console.error(err.response.data);
-      }
+      register({ name, email, password });
     }
   };
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <>
@@ -79,7 +64,6 @@ function Register({ setAlert }) {
               name='name'
               value={name}
               placeholder='Your full name'
-              required
             />
 
             <label htmlFor='email' className='register-label'>
@@ -93,7 +77,6 @@ function Register({ setAlert }) {
               className='register-input'
               placeholder='Email address'
               name='email'
-              required
             />
 
             <label htmlFor='password' className='register-label'>
@@ -107,7 +90,6 @@ function Register({ setAlert }) {
               name='password'
               className='register-input'
               placeholder='Password'
-              required
             />
             <label htmlFor='passwordCheck' className='register-label'>
               Confirm Password
@@ -120,7 +102,6 @@ function Register({ setAlert }) {
               name='passwordCheck'
               value={passwordCheck}
               placeholder='Confirm Password'
-              required
             />
             <button type='submit' className='register-btn'>
               Create Account
@@ -137,6 +118,12 @@ function Register({ setAlert }) {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

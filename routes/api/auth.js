@@ -20,6 +20,8 @@ router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
 
+    console.log(user);
+
     return res.json(user);
   } catch (error) {
     console.error(error.message);
@@ -34,7 +36,7 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email address').isEmail(),
-    check('password', 'Please is required').exists()
+    check('password', 'Please is required').exists(),
   ],
   async (req, res) => {
     const errorsArr = validationResult(req);
@@ -61,15 +63,15 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
         payload,
-        config.get('jwtToken'),
+        config.get('jwtSecret'),
         {
-          expiresIn: 36000
+          expiresIn: 3600,
         },
         (err, token) => {
           if (err) {

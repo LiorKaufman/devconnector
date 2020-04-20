@@ -13,18 +13,16 @@ const Alert = ({ alerts, removeAlert }) => {
     alerts !== null &&
     alerts.length > 0 &&
     alerts.map((alert) => (
-      <div className='absolute-center' key={alert.id}>
-        <div className={`alert alert-${alert.alertType}`}>
-          {alert.msg}
-          <button
-            type='button'
-            className='close'
-            aria-label='Close'
-            onClick={() => handleDelete(alert.id)}
-          >
-            <span aria-hidden='true'>X</span>
-          </button>
-        </div>
+      <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+        {alert.msg}
+        <button
+          type='button'
+          className='close'
+          aria-label='Close'
+          onClick={() => handleDelete(alert.id)}
+        >
+          <span aria-hidden='true'>X</span>
+        </button>
       </div>
     ))
   );

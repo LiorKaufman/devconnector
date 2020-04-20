@@ -200,16 +200,20 @@ input:focus {
 }
 
 .alert {
+  position: relative;
   padding: 0.8rem;
   margin: 1rem 0;
   opacity: 0.8;
   background: var(--light-color);
   color: #333;
+  pointer-events: initial !important;
 }
 
 .absolute-center {
+  pointer-events: none;
   width: 300px;
   height: 200px;
+  overflow: auto;
   position: absolute !important;
   left: 50%;
   top: 55%;

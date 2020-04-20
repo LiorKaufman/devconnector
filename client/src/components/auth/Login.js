@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
+// redux
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/authActions';
 // react router
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const emptyLoginForm = {
   email: '',
   password: '',
 };
 
-export default function Login() {
+const Login = ({ login, isAuthenticated }) => {
   const [userLoginForm, setUserLoginForm] = useState(emptyLoginForm);
 
   const { email, password } = userLoginForm;
@@ -22,8 +25,14 @@ export default function Login() {
 
   const onSumbmit = async (e) => {
     e.preventDefault();
+    login(email, password);
   };
 
+  // If logged in we want to redirect the user
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <>
       <div className='container register'>
@@ -76,4 +85,14 @@ export default function Login() {
       </div>
     </>
   );
-}
+};
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);

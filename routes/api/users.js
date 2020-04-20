@@ -14,14 +14,12 @@ const User = require('../../models/User');
 router.post(
   '/',
   [
-    check('name', 'Name is required')
-      .not()
-      .isEmpty(),
+    check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email address').isEmail(),
     check(
       'password',
       'Please enter a password with 5 or more characters'
-    ).isLength({ min: 5 })
+    ).isLength({ min: 5 }),
   ],
   async (req, res) => {
     const errorsArr = validationResult(req);
@@ -44,14 +42,14 @@ router.post(
       const avatar = gravatar.url(email, {
         s: '200',
         r: 'pg',
-        d: 'mm'
+        d: 'mm',
       });
 
       user = new User({
         name,
         email,
         avatar,
-        password
+        password,
       });
 
       // generate salt for encryption
@@ -65,15 +63,15 @@ router.post(
       // Return jsonwebtoken
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
         payload,
-        config.get('jwtToken'),
+        config.get('jwtSecret'),
         {
-          expiresIn: 36000
+          expiresIn: 36000,
         },
         (err, token) => {
           if (err) {
