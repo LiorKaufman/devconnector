@@ -11,7 +11,7 @@ import { logout } from '../actions/authActions';
 // Resources
 import BrandLogoImg from '../resources/img/BrandLogo.png';
 
-const MainNavBar = ({ authReducer: { isAuthenticated, loading }, logout }) => {
+const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const logedInUserLinks = (
     <ul className='navbar-nav ml-auto'>
       <li className='nav-item'>
@@ -93,11 +93,11 @@ const MainNavBar = ({ authReducer: { isAuthenticated, loading }, logout }) => {
 
 MainNavBar.propTypes = {
   logout: PropTypes.func.isRequired,
-  authReducer: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authReducer: state.authReducer,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { logout })(MainNavBar);
