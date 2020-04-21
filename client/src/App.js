@@ -6,8 +6,8 @@ import Landing from './components/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
-import Dashboard from './components/Dashboard';
-
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -46,17 +46,16 @@ const App = () => {
         <>
           <MainNavBar />
           <div style={boxStyle}></div>
-          <div className='container'>
-            <div className='absolute-center'>
-              <Alert />
-            </div>
-            <Route exact path='/' component={Landing} />
-            <Switch>
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/dashboard' component={Dashboard} />
-            </Switch>
+          <div className='absolute-center'>
+            <Alert />
           </div>
+          <Route exact path='/' component={Landing} />
+          <Switch>
+            <Route exact path='/register' component={Register} />
+            <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          </Switch>
+          <div className='container'></div>
         </>
       </Router>
     </Provider>

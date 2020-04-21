@@ -26,6 +26,10 @@ const Login = ({ login, isAuthenticated }) => {
   const onSumbmit = async (e) => {
     e.preventDefault();
     login(email, password);
+    setUserLoginForm({
+      ...userLoginForm,
+      password: '',
+    });
   };
 
   // If logged in we want to redirect the user
@@ -35,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <>
-      <div className='container register'>
+      <div className='container'>
         <div className='register-card'>
           <div>
             <h3 className='register-title register-align'>Login</h3>

@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <div className='container'>Dashboard</div>
+    </>
+  );
 };
 
 const mapStateToProps = (state) => ({});
