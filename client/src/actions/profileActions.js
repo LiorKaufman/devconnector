@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert } from './alertActions';
+// import { setAlert } from './alertActions';
 
 // types
 import { GET_PROFILE, PROFILE_ERROR } from './types';
