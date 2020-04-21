@@ -1,16 +1,54 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 
-export const Dashboard = () => {
+// components
+import Spinner from '../layout/Spinner';
+
+// redux
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profileActions';
+import PropTypes from 'prop-types';
+
+export const Dashboard = ({
+  getCurrentProfile,
+  profile: { profile, loading },
+  auth: { user },
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, []);
+
   return (
-    <>
-      <div className='container'>Dashboard</div>
-    </>
+    <div
+      className='container'
+      style={{
+        height: '100vh',
+      }}
+    >
+      {loading && profile === null ? (
+        <Spinner />
+      ) : (
+        <>
+          <h1 className='medium'> Dashboard</h1>
+          <p className='lead'>
+            <i className='fas fa-user'>Welcome {user && user.name}</i>
+          </p>
+
+          {profile !== null ? <>has profile</> : <> no profile</>}
+        </>
+      )}
+    </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+Dashboard.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 
-const mapDispatchToProps = {};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  profile: state.profile,
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 
 // react router
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
+//redux
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const emptyLoginForm = {
   email: '',
   password: '',
 };
 
-export default function Landing() {
+const Landing = ({ isAuthenticated }) => {
   const [userLoginForm, setUserLoginForm] = useState(emptyLoginForm);
 
   const { email, password } = userLoginForm;
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   const onChange = (e) =>
     setUserLoginForm({
@@ -112,4 +120,14 @@ export default function Landing() {
       </div>
     </>
   );
-}
+};
+
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Landing);

@@ -15,8 +15,14 @@ const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const logedInUserLinks = (
     <ul className='navbar-nav ml-auto'>
       <li className='nav-item'>
+        <Link to='/dashboard' className='nav-link' href='#'>
+          <i className='fas fa-user mr-1'></i>
+          Dashboard
+        </Link>
+      </li>
+      <li className='nav-item'>
         <a className='nav-link' href='#!' onClick={logout}>
-          <i className='fas fa-sign-out-alt'></i>
+          <i className='fas fa-sign-out-alt mr-1'></i>
           Logout
         </a>
       </li>
