@@ -8,9 +8,12 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
-import PrivateRoute from './components/routing/PrivateRoute';
+import AddEducation from './components/profile/AddEducation';
+import AddExperience from './components/profile/AddExperience';
+
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 // redux
 import { Provider } from 'react-redux';
@@ -57,6 +60,16 @@ const App = () => {
               exact
               path='/create-profile'
               component={CreateProfile}
+            />
+            <PrivateRoute
+              exact
+              path='/add-experience'
+              component={AddExperience}
+            />
+            <PrivateRoute
+              exact
+              path='/add-education'
+              component={AddEducation}
             />
           </Switch>
         </>

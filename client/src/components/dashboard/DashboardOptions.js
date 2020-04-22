@@ -3,29 +3,26 @@ import React from 'react';
 // react router
 import { Link } from 'react-router-dom';
 
-//redux
-import PropTypes from 'prop-types';
-
 const DashboardOptions = (props) => {
   return (
     <>
       <div>
         <Link
-          to='create-profile'
+          to='/create-profile'
           className='btn 
              btn-light m-2 ml-4'
         >
           Edit Profile
         </Link>
         <Link
-          to=''
+          to='/add-experience'
           className='btn 
              btn-light m-2'
         >
           Add Experience
         </Link>
         <Link
-          to=''
+          to='/add-education'
           className='btn 
              btn-light m-2'
         >
@@ -35,7 +32,5 @@ const DashboardOptions = (props) => {
     </>
   );
 };
-
-DashboardOptions.propTypes = {};
 
 export default DashboardOptions;
