@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 // components
 import Spinner from '../layout/Spinner';
+import DashboardOptions from './DashboardOptions';
 
 // redux
 import { connect } from 'react-redux';
@@ -20,13 +21,14 @@ export const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  const hasProfile = <div> Has profile</div>;
+  const hasProfile = (
+    <>
+      <DashboardOptions />
+    </>
+  );
 
   const noProfile = (
     <>
-      <div className='main-overview'>
-        <div className='overviewcard'>Welcome {user && user.name}</div>
-      </div>
       <div className='main-cards'>
         <div className='gridcards'>
           <p>
@@ -49,6 +51,16 @@ export const Dashboard = ({
           <header className='header'>Dashboard</header>
 
           <main className='main'>
+            <div className='main-overview'>
+              <div
+                className='overviewcard'
+                style={{
+                  fontWeight: 'bold',
+                }}
+              >
+                Welcome {user && user.name}
+              </div>
+            </div>
             {profile !== null ? <>{hasProfile}</> : <> {noProfile}</>}
           </main>
         </>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { setAlert } from './alertActions';
 
 // types
-import { GET_PROFILE, PROFILE_ERROR, CREATE_PROFILE } from './types';
+import { GET_PROFILE, PROFILE_ERROR } from './types';
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
