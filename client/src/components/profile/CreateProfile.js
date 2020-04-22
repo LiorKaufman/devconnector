@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 //react-router
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // redux
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profileActions';
 
 const defaultState = {
   company: '',
@@ -21,7 +22,7 @@ const defaultState = {
   youtube: '',
   instagram: '',
 };
-const CreateProfile = (props) => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState(defaultState);
   const [displaySocialInputs, toggleSocialInputs] = useState(true);
   const {
@@ -44,14 +45,15 @@ const CreateProfile = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // createProfile(formData, history, profile ? true : false);
+
+    createProfile(formData, history);
   };
   return (
     <>
       <div className='grid-container'>
         <header className='header'> Create Profile</header>
-        <div className='main py-1 pl-2 pr-2'>
-          <form onSubmit={onSubmit}>
+        <div className='main py-1 pl-2 pr-2 '>
+          <form onSubmit={(e) => onSubmit(e)} className='grid-center'>
             <div className='form-group'>
               <label htmlFor='status' className='profile-label'>
                 Status
@@ -280,12 +282,17 @@ const CreateProfile = (props) => {
             </Link>
           </form>
         </div>
-        <footer className='footer'></footer>
+        <footer className='footer'>
+          <div className='footer'> 2020 MTH</div>
+          <div className='footer'>Made with love by pure genius</div>
+        </footer>
       </div>
     </>
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(withRouter(CreateProfile));
