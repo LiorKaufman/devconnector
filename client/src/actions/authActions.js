@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  CLEAR_PROFILE,
 } from './types';
 import { setAlert } from './alertActions';
 
@@ -18,7 +19,6 @@ export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
-
   try {
     const res = await axios.get('/api/auth');
 
@@ -27,7 +27,9 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({ type: AUTH_ERROR });
+    dispatch({
+      type: AUTH_ERROR,
+    });
   }
 };
 
@@ -60,7 +62,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   }
 };
 
-// Login user
+// Login User
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -77,12 +79,15 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
+
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
+
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
+
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -94,5 +99,8 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({
     type: LOGOUT,
+  });
+  dispatch({
+    type: CLEAR_PROFILE,
   });
 };

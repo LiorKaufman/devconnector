@@ -15,20 +15,21 @@ const User = require('../../models/User');
 
 // @route GET api/auth
 // @desc T
-// @access Public
+// @access Private
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
-
-    return res.json(user);
+    res.json(user);
   } catch (error) {
+    console.log('an error form api auth get route', error);
+
     console.error(error.message);
     res.status(500).send('Server Error');
   }
 });
 
 // @route POST api/auth
-// @desc Register user
+// @desc Login user
 // @access Public
 router.post(
   '/',
