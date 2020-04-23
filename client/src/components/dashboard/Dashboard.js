@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 // components
 import Spinner from '../layout/Spinner';
 import DashboardOptions from './DashboardOptions';
+import ExperienceList from './ExperienceList';
+import EducationList from './EducationList';
 
 // redux
 import { connect } from 'react-redux';
@@ -61,7 +63,15 @@ export const Dashboard = ({
                 Welcome {user && user.name}
               </div>
             </div>
-            {profile !== null ? <>{hasProfile}</> : <> {noProfile}</>}
+            {profile !== null ? (
+              <>
+                {hasProfile}
+                <ExperienceList experience={profile.experience} />
+                <EducationList education={profile.education} />
+              </>
+            ) : (
+              <> {noProfile}</>
+            )}
           </main>
         </>
       )}

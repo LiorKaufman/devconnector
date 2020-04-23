@@ -38,7 +38,31 @@
   grid-area: main;
   background-color: #648ca6;
   color: var(--gray-dark);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 50px 1fr 1fr;
+  grid-template-areas:
+    'main-header'
+    'options'
+    'experience '
+    'education';
 }
+
+.main-education {
+  margin: 2rem;
+  margin-bottom: 3rem;
+  grid-area: education;
+}
+.main-experience {
+  margin-top: 1rem;
+  margin: 2rem;
+  grid-area: experience;
+}
+.main-options {
+  margin-top: 2rem;
+  grid-area: options;
+}
+
 .main-btn {
   color: white;
   background-color: var(--primary-color);
@@ -51,6 +75,7 @@
   margin-top: 0.5rem;
 }
 .main-overview {
+  grid-area: main-header;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,

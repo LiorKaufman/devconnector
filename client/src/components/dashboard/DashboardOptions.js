@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const DashboardOptions = (props) => {
   return (
     <>
-      <div>
+      <div className='main-options'>
         <Link
           to='/create-profile'
           className='btn 
