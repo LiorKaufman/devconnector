@@ -10,6 +10,7 @@ import {
   DELETE_ACCOUNT,
   GET_ALL_PROFILES,
   GET_REPOS,
+  NO_REPOS,
 } from './types';
 
 export const getCurrentProfile = () => async (dispatch) => {
@@ -228,7 +229,7 @@ export const getUserProfile = (userID) => async (dispatch) => {
     });
   }
 };
-
+// Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/profile/github/${username}`);
@@ -238,11 +239,8 @@ export const getGithubRepos = (username) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    const errors = err.response.data.errors;
-    errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      type: NO_REPOS,
     });
   }
 };

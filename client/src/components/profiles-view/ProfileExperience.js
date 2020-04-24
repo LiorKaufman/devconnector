@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// helpers
 import Moment from 'react-moment';
 import moment from 'moment';
 
@@ -7,7 +9,7 @@ const ProfileExperience = ({
   experience: { company, title, location, current, to, from, description },
 }) => (
   <div>
-    <h3 className='text-dark'>{company}</h3>
+    <h2 className='text-teal'> {company}</h2>
     <p>
       <Moment format='YYYY/MM/DD'>{moment.utc(from)}</Moment> -{' '}
       {!to ? ' Now' : <Moment format='YYYY/MM/DD'>{moment.utc(to)}</Moment>}

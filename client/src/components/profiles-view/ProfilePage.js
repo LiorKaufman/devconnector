@@ -11,6 +11,7 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileTop from './ProfileTop';
+import ProfileRepos from './ProfileRepos';
 
 // react-router
 import { Link } from 'react-router-dom';
@@ -33,13 +34,16 @@ const ProfilePage = ({
             <Spinner />
           ) : (
             <Fragment>
-              <Link to='/profiles' className='btn btn-warning'>
+              <Link to='/profiles' className='btn btn-warning my-2 mb-1'>
                 Back to Profiles
               </Link>
               {auth.isAuthenticated &&
                 auth.loading === false &&
                 auth.user._id === profile.user._id && (
-                  <Link to='/edit-profile' className='btn btn-success'>
+                  <Link
+                    to='/create-profile'
+                    className='btn btn-success my-2 mb-1 ml-2'
+                  >
                     {' '}
                     Edit Profile
                   </Link>
@@ -49,7 +53,7 @@ const ProfilePage = ({
                 <ProfileTop profile={profile} />
                 <ProfileAbout profile={profile} />
                 <div className='profile-exp p-2'>
-                  <h2 className='text-primary'>Experience</h2>
+                  <h2 className='text-light'>Experience</h2>
                   {profile.experience.length > 0 ? (
                     <Fragment>
                       {profile.experience.map((experience) => (
@@ -64,7 +68,12 @@ const ProfilePage = ({
                   )}
                 </div>
                 <div className='profile-edu p-2'>
-                  <h2 className='text-primary'>Education</h2>
+                  <h2
+                    className='text-light
+                  '
+                  >
+                    Education
+                  </h2>
                   {profile.education.length > 0 ? (
                     <Fragment>
                       {profile.education.map((education) => (
@@ -78,6 +87,9 @@ const ProfilePage = ({
                     <h4>No education credentials</h4>
                   )}
                 </div>
+                {profile.githubusername && (
+                  <ProfileRepos username={profile.githubusername} />
+                )}
               </div>
             </Fragment>
           )}
