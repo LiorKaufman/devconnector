@@ -21,6 +21,11 @@ const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li className='nav-item'>
+        <Link to='/profiles' className='nav-link'>
+          Profiles
+        </Link>
+      </li>
+      <li className='nav-item'>
         <a className='nav-link' href='#!' onClick={logout}>
           <i className='fas fa-sign-out-alt mr-1'></i>
           Logout
@@ -33,6 +38,11 @@ const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <ul className='navbar-nav'>
       <li className='nav-item'>
         <Link to='/' className='nav-link'>
+          Dashboard
+        </Link>
+      </li>
+      <li className='nav-item'>
+        <Link to='/profiles' className='nav-link'>
           Profiles
         </Link>
       </li>

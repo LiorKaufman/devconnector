@@ -37,7 +37,7 @@ const AddExperience = ({ addExperience, history }) => {
     <>
       <div className='grid-container'>
         <header className='header'> Add Experience</header>
-        <div className='main py-1 pl-2 pr-2 '>
+        <div className='main py-1 pl-2 pr-2'>
           <div className='main-header'>
             <p> Add any relevant positions that you have had in the past </p>
           </div>
@@ -92,7 +92,7 @@ const AddExperience = ({ addExperience, history }) => {
 
             <div className='form-group'>
               <label htmlFor='description' className='profile-label'>
-                Describe your job,achievments and more...
+                Describe your job...
               </label>
               <textarea
                 id='description'

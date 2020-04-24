@@ -17,7 +17,7 @@ const PrivateRoute = ({
     {...rest}
     render={(props) =>
       loading ? (
-        <div className='container' style={{ height: '100vh' }}>
+        <div className='container-bg' style={{ height: '100vh' }}>
           <Spinner />
         </div>
       ) : isAuthenticated ? (

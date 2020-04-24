@@ -75,7 +75,13 @@ const CreateProfile = ({
       <div className='grid-container'>
         <header className='header'> Create Profile</header>
         <div className='main py-1 pl-2 pr-2 '>
-          <form onSubmit={(e) => onSubmit(e)} className='grid-center'>
+          <form
+            onSubmit={(e) => onSubmit(e)}
+            className='container'
+            syle={{
+              margin: 'auto',
+            }}
+          >
             <div className='form-group'>
               <label htmlFor='status' className='profile-label'>
                 Status

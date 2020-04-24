@@ -8,7 +8,7 @@ import EducationList from './EducationList';
 
 // redux
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileActions';
+import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import PropTypes from 'prop-types';
 
 // react-router
@@ -16,18 +16,13 @@ import { Link } from 'react-router-dom';
 
 export const Dashboard = ({
   getCurrentProfile,
+  deleteAccount,
   profile: { profile, loading },
   auth: { user },
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-
-  const hasProfile = (
-    <>
-      <DashboardOptions />
-    </>
-  );
 
   const noProfile = (
     <>
@@ -52,7 +47,7 @@ export const Dashboard = ({
         <>
           <header className='header'>Dashboard</header>
 
-          <main className='main'>
+          <main className='main-dashboard'>
             <div className='main-overview'>
               <div
                 className='overviewcard'
@@ -65,9 +60,17 @@ export const Dashboard = ({
             </div>
             {profile !== null ? (
               <>
-                {hasProfile}
-                <ExperienceList experience={profile.experience} />
-                <EducationList education={profile.education} />
+                <div className='container'>
+                  <DashboardOptions />
+                  <ExperienceList experience={profile.experience} />
+                  <EducationList education={profile.education} />
+                  <button
+                    className='btn btn-medium btn-danger my-1 mb-2 ml-4'
+                    onClick={() => deleteAccount()}
+                  >
+                    Delete Account
+                  </button>
+                </div>
               </>
             ) : (
               <> {noProfile}</>
@@ -84,6 +87,7 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -91,4 +95,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);

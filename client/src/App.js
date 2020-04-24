@@ -10,6 +10,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
 import AddEducation from './components/profile/AddEducation';
 import AddExperience from './components/profile/AddExperience';
+import ProfilesList from './components/profiles-view/ProfilesList';
 
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -55,6 +56,7 @@ const App = () => {
           <Switch>
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/profiles' component={ProfilesList} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <PrivateRoute
               exact

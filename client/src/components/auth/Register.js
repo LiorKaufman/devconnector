@@ -41,7 +41,7 @@ function Register({ setAlert, register, isAuthenticated }) {
 
   return (
     <>
-      <div className='container'>
+      <div className='container-bg'>
         <div className='register-card'>
           <h3 className='register-title register-align'>Register</h3>
           <p
