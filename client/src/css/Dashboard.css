@@ -1,5 +1,6 @@
 .grid-container {
   display: grid;
+
   grid-template-columns: 1fr;
   grid-template-rows: 75px 1fr 50px;
   grid-template-areas:
@@ -9,17 +10,37 @@
   height: 100vh;
 }
 
+.bg-lightblue {
+  background-color: #648ca6 !important;
+  height: 100%;
+}
+.bg-something {
+  background-color: var(--primary-color) !important;
+  height: 100%;
+}
 .grid-center {
   max-width: 1100px;
+  max-height: 720px;
   height: 100%;
   margin: auto;
-  overflow: hidden;
+  overflow-y: hidden;
   padding: 2rem;
   margin-top: 2rem;
-  margin-bottom: 3rem;
   border-radius: 6px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   outline: 0;
+}
+
+@media screen and (max-height: 800px) {
+  .grid-center {
+    max-width: 1100px;
+    height: 100%;
+    margin: auto;
+    overflow: auto;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
 }
 
 /* Give every child element its grid name */
@@ -34,7 +55,8 @@
   padding: 0 16px;
 }
 
-.main {
+.main-dashboard {
+  overflow-y: auto;
   grid-area: main;
   background-color: #648ca6;
   color: var(--gray-dark);
@@ -47,6 +69,11 @@
     'experience '
     'education';
 }
+.main {
+  grid-area: main;
+  background-color: #648ca6;
+  color: var(--gray-dark);
+}
 
 .main-education {
   margin: 2rem;
@@ -54,8 +81,8 @@
   grid-area: education;
 }
 .main-experience {
-  margin-top: 1rem;
   margin: 2rem;
+  margin-bottom: 3rem;
   grid-area: experience;
 }
 .main-options {
@@ -102,28 +129,13 @@
 }
 
 .gridcard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
   align-items: center;
-  width: 100%;
-  background-color: #82bef6;
-  margin-bottom: 20px;
-  -webkit-column-break-inside: avoid;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-/* Force varying heights to simulate dynamic content */
-.gridcard:first-child {
-  height: 485px;
-}
-
-.gridcard:nth-child(2) {
-  height: 200px;
-}
-
-.gridcard:nth-child(3) {
-  height: 265px;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
 }
 
 .footer {
@@ -150,4 +162,178 @@
 .reff {
   width: 100% !important;
   margin-bottom: 1rem;
+}
+
+/* user profile page styles */
+
+.profile-grid {
+  display: grid;
+  grid-template-areas:
+    'top top'
+    'about about'
+    'exp edu'
+    'github github';
+  grid-template-rows: 4fr 2fr 3fr;
+  grid-gap: 1rem;
+}
+
+.profile-top {
+  grid-area: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-top img {
+  width: 250px;
+}
+
+.profile-top .icons a {
+  color: #fff;
+  margin: 0 0.3rem;
+}
+
+.profile-top .icons a:hover {
+  color: var(--dark-color);
+}
+
+.profile-about {
+  grid-area: about;
+  text-align: center;
+}
+
+.profile-about .skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-exp {
+  grid-area: exp;
+  background-color: #31425a;
+}
+
+.profile-edu {
+  background-color: #31425a;
+
+  grid-area: edu;
+}
+
+.profile-exp h2,
+.profile-edu h2 {
+  margin-bottom: 1rem;
+}
+
+.profile-exp > div,
+.profile-edu > div {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: #ccc 1px dotted;
+}
+
+.profile-exp > div:last-child,
+.profile-edu > div:last-child {
+  border: 0;
+}
+
+.profile-exp p,
+.profile-edu p {
+  margin: 0.5rem 0;
+}
+
+.profile-github {
+  grid-area: github;
+}
+
+.profile-github .repo {
+  display: flex;
+  border: 1px solid white;
+}
+
+.profile-github .repo > div:first-child {
+  flex: 7;
+  flex-basis: 70%;
+}
+
+.profile-github > div:last-child {
+  flex: 3;
+  flex-basis: 20%;
+}
+
+/* Posts Page */
+.post-form .post-form-header {
+  background: var(--primary-color);
+  padding: 0.5rem;
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  align-items: center;
+}
+
+.post > div:first-child {
+  text-align: center;
+}
+
+.post img {
+  width: 100px;
+}
+
+.post .comment-count {
+  background: var(--light-color);
+  color: var(--primary-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.post .post-date {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .gridcard {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-top img,
+  .profile img {
+    width: 200px;
+    margin: auto;
+  }
+
+  .profile-grid {
+    grid-template-areas:
+      'top'
+      'about'
+      'exp'
+      'edu'
+      'github';
+  }
+
+  .profile-about .skills {
+    flex-direction: column;
+  }
+
+  .dash-buttons a {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .post {
+    grid-template-columns: 1fr;
+  }
+  .post a,
+  .post button {
+    padding: 0.3rem 0.4rem;
+  }
 }

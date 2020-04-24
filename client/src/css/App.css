@@ -35,7 +35,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.container {
+.container-bg {
   max-width: 1100px;
   height: 100%;
   margin: auto;
@@ -80,7 +80,7 @@ body {
   text-align: center;
 }
 
-.text-primary {
+.text-teal {
   color: var(--primary-color);
 }
 
@@ -224,4 +224,10 @@ input:focus {
   left: 50%;
   top: 55%;
   margin: -100px 0 0 -150px !important;
+}
+
+@media (max-width: 700px) {
+  .hide-sm {
+    display: none;
+  }
 }

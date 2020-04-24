@@ -3,12 +3,13 @@ import React from 'react';
 // redux
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { deleteExperience } from '../../actions/profileActions';
 
 // helpers
 import Moment from 'react-moment';
 import moment from 'moment';
 
-const ExperienceList = ({ experience }) => {
+const ExperienceList = ({ experience, deleteExperience }) => {
   const experiences = experience.map((exp) => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
@@ -22,7 +23,12 @@ const ExperienceList = ({ experience }) => {
         )}
       </td>
       <td>
-        <button className='btn btn-danger'>Delete</button>
+        <button
+          className='btn btn-danger'
+          onClick={() => deleteExperience(exp._id)}
+        >
+          Delete
+        </button>
       </td>
     </tr>
   ));
@@ -30,13 +36,17 @@ const ExperienceList = ({ experience }) => {
     <>
       <div className='main-experience'>
         <h2 className='my-2'>Experience Credentials</h2>
-        <table className='table'>
-          <thead>
+        <table className='table table-dark'>
+          <thead className='thead-dark'>
             <tr>
               <th>Company</th>
-              <th className='hide-sm'>Title</th>
-              <th className='hide-sm'>Years</th>
-              <th></th>
+              <th scope='col' className='hide-sm'>
+                Title
+              </th>
+              <th scope='col' className='hide-sm'>
+                Years
+              </th>
+              <th scope='col' className='hide-sm'></th>
             </tr>
           </thead>
           <tbody>{experiences}</tbody>
@@ -48,6 +58,7 @@ const ExperienceList = ({ experience }) => {
 
 ExperienceList.propTypes = {
   experience: PropTypes.array.isRequired,
+  deleteExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null)(ExperienceList);
+export default connect(null, { deleteExperience })(ExperienceList);

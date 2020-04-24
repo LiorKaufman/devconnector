@@ -10,6 +10,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile/CreateProfile';
 import AddEducation from './components/profile/AddEducation';
 import AddExperience from './components/profile/AddExperience';
+import ProfilesList from './components/profiles-view/ProfilesList';
+import ProfilePage from './components/profiles-view/ProfilePage';
 
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -53,24 +55,28 @@ const App = () => {
           </div>
           <Route exact path='/' component={Landing} />
           <Switch>
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-            <PrivateRoute exact path='/dashboard' component={Dashboard} />
-            <PrivateRoute
-              exact
-              path='/create-profile'
-              component={CreateProfile}
-            />
-            <PrivateRoute
-              exact
-              path='/add-experience'
-              component={AddExperience}
-            />
-            <PrivateRoute
-              exact
-              path='/add-education'
-              component={AddEducation}
-            />
+            <React.Fragment>
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/profiles' component={ProfilesList} />
+              <Route exact path='/profile/:id' component={ProfilePage} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/create-profile'
+                component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/add-experience'
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path='/add-education'
+                component={AddEducation}
+              />
+            </React.Fragment>
           </Switch>
         </>
       </Router>

@@ -34,7 +34,7 @@ const Landing = ({ isAuthenticated }) => {
   return (
     <>
       <div
-        className='container'
+        className='container-bg'
         style={{
           height: '100vh',
         }}

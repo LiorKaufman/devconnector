@@ -4,6 +4,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGOUT,
+  DELETE_ACCOUNT,
 } from '../actions/types';
 
 const initialState = {
@@ -39,6 +40,7 @@ export default function authReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       };
+    case DELETE_ACCOUNT:
     case AUTH_ERROR:
     case LOGOUT:
       return {
@@ -48,6 +50,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         user: null,
       };
+
     default:
       return state;
   }

@@ -39,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <>
-      <div className='container'>
+      <div className='container-bg'>
         <div className='register-card'>
           <div>
             <h3 className='register-title register-align'>Login</h3>
