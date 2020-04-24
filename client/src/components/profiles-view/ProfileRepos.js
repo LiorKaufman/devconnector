@@ -14,7 +14,7 @@ const ProfileRepos = ({ username, getGithubRepos, repos }) => {
   }, [getGithubRepos, username]);
 
   return (
-    <div className='profile-github bg-secondary'>
+    <div className='profile-github bg-secondary my-1 mb-1'>
       <h2 className='my-1'>Github Repos</h2>
       {repos === null ? (
         <Spinner />

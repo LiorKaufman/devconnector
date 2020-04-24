@@ -39,7 +39,14 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <>
-      <div className='container-bg'>
+      <div
+        className='container-bg'
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <div className='register-card'>
           <div>
             <h3 className='register-title register-align'>Login</h3>

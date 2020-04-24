@@ -12,6 +12,7 @@ import AddEducation from './components/profile/AddEducation';
 import AddExperience from './components/profile/AddExperience';
 import ProfilesList from './components/profiles-view/ProfilesList';
 import ProfilePage from './components/profiles-view/ProfilePage';
+import PostList from './components/posts-view/PostList';
 
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -76,6 +77,7 @@ const App = () => {
                 path='/add-education'
                 component={AddEducation}
               />
+              <PrivateRoute exact path='/posts' component={PostList} />
             </React.Fragment>
           </Switch>
         </>
