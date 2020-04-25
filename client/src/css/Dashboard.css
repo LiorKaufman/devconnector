@@ -285,8 +285,8 @@
 }
 
 .post .comment-count {
-  background: var(--light-color);
-  color: var(--primary-color);
+  background: var(--dark-color);
+  color: var(--light-color);
   padding: 0.1rem 0.2rem;
   border-radius: 5px;
   font-size: 0.8rem;
@@ -296,6 +296,10 @@
   color: #aaa;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
+}
+
+.comment-border {
+  border: 1px solid #99b0bc;
 }
 
 @media (max-width: 700px) {

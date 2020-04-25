@@ -26,10 +26,37 @@ const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li className='nav-item'>
+        <Link to='/posts' className='nav-link'>
+          Posts
+        </Link>
+      </li>
+      <li className='nav-item'>
         <a className='nav-link' href='#!' onClick={logout}>
           <i className='fas fa-sign-out-alt mr-1'></i>
           Logout
         </a>
+      </li>
+      <li className='nav-item dropdown'>
+        <Link
+          to='/'
+          className='nav-link dropdown-toggle'
+          data-toggle='dropdown'
+          data-target='dropdown_target'
+          href='#'
+        >
+          Profile Settings
+          <span className='caret'></span>
+        </Link>
+        <div className='dropdown-menu' aria-labelledby='dropdown_target'>
+          <Link to='/add-education' className='dropdown-item'>
+            Add Education
+          </Link>
+          <div className='dropdown-divider'></div>
+          <Link to='/add-experience' className='dropdown-item'>
+            Add Experience
+          </Link>
+          <div className='dropdown-divider'></div>
+        </div>
       </li>
     </ul>
   );
@@ -55,31 +82,6 @@ const MainNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/login' className='nav-link' href='#'>
           Login
         </Link>
-      </li>
-      <li className='nav-item dropdown'>
-        <Link
-          to='/'
-          className='nav-link dropdown-toggle'
-          data-toggle='dropdown'
-          data-target='dropdown_target'
-          href='#'
-        >
-          Settings
-          <span className='caret'></span>
-        </Link>
-        <div className='dropdown-menu' aria-labelledby='dropdown_target'>
-          <Link to='/' className='dropdown-item'>
-            User Settings
-          </Link>
-          <div className='dropdown-divider'></div>
-          <Link to='/' className='dropdown-item'>
-            View Settings{' '}
-          </Link>
-          <div className='dropdown-divider'></div>
-          <Link to='/' className='dropdown-item'>
-            Some other settings
-          </Link>
-        </div>
       </li>
     </ul>
   );
