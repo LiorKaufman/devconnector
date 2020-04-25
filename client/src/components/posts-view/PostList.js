@@ -8,13 +8,12 @@ import { getPosts } from '../../actions/postActions';
 // components
 import Spinner from '../layout/Spinner';
 import PostItem from './PostItem';
+import AddPost from './AddPost';
 
 const PostList = ({ post: { posts, loading }, getPosts }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-
-  console.log(posts);
 
   return loading ? (
     <Spinner />
@@ -33,7 +32,7 @@ const PostList = ({ post: { posts, loading }, getPosts }) => {
         <p className='text-light'>
           <i className='fas fa-user'> Welcome to the community</i>
         </p>
-
+        <AddPost />
         <div className='posts p-2'>
           {posts.map((post) => (
             <PostItem key={post._id} post={post} />

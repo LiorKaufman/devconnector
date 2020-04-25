@@ -13,6 +13,7 @@ import AddExperience from './components/profile/AddExperience';
 import ProfilesList from './components/profiles-view/ProfilesList';
 import ProfilePage from './components/profiles-view/ProfilePage';
 import PostList from './components/posts-view/PostList';
+import PostPage from './components/posts-view/PostPage';
 
 // React router
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -78,6 +79,7 @@ const App = () => {
                 component={AddEducation}
               />
               <PrivateRoute exact path='/posts' component={PostList} />
+              <PrivateRoute exact path='/posts/:id' component={PostPage} />
             </React.Fragment>
           </Switch>
         </>
