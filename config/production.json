@@ -1,6 +1,4 @@
 {
   "mongoURI": "mongodb+srv://lior123:lior123@devconnector-icj4m.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "myseeecret",
-  "githubClientId": "167e8f7a567b2b02e460",
-  "githubSecret": "49ebc44c559f827d7baa333801bb129efbc6a4de"
+  "jwtSecret": "myseeecret"
 }
