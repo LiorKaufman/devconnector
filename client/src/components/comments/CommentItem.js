@@ -20,7 +20,7 @@ const CommentItem = ({
   return (
     <div className='post p-1 ml-2 mr-2 comment-border'>
       <div>
-        <Link to={`/profile`}>
+        <Link to={`/profile/${user}`}>
           <img
             src={avatar}
             alt='avatar'
