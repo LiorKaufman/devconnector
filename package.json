@@ -17,6 +17,7 @@
   "author": "Lior Kaufman",
   "license": "MIT",
   "dependencies": {
+    "client": "file:client",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.0",
