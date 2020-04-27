@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
-const request = require('request');
-const config = require('config');
 const axios = require('axios');
+const normalize = require('normalize-url');
 
 // @route GET api/profile/me
 // @desc Get the user profile
