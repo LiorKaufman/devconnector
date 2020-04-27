@@ -161,8 +161,8 @@ const AddEducation = ({ addEducation, history }) => {
           </form>
         </div>
         <footer className='footer'>
-          <div className='footer'> 2020 MTH</div>
-          <div className='footer'>Made with love by pure genius</div>
+          <div className='footer'> 2020</div>
+          <div className='footer'>Made by Lior Kaufman</div>
         </footer>
       </div>
     </>
